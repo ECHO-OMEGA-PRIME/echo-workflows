@@ -1,0 +1,27 @@
+name = "echo-workflows"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "echo-workflows"
+database_id = "a1c555b6-5f64-4fd8-aca7-ce226765ba99"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "26e4ed16fef84c06ba9f91c6425e6133"
+
+[[services]]
+binding = "ENGINE_RUNTIME"
+service = "echo-engine-runtime"
+
+[[services]]
+binding = "SHARED_BRAIN"
+service = "echo-shared-brain"
+
+[[services]]
+binding = "EMAIL_SENDER"
+service = "echo-email-sender"
