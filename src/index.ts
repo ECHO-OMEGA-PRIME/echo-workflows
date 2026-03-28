@@ -66,7 +66,9 @@ app.use('*', async (c, next) => {
   return next();
 });
 
-// ═══════════════ HEALTH ═══════════════
+// ═══════════════ ROOT & HEALTH ═══════════════
+app.get('/', (c) => json({ service: 'echo-workflows', version: '1.0.0', status: 'operational' }));
+
 app.get('/health', async (c) => {
   let dbOk = false;
   try { await c.env.DB.prepare('SELECT 1').first(); dbOk = true; } catch {}
